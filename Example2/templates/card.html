@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Telefonlar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Telefon Listesi</h1>
+        <div class="d-flex flex-row flex-wrap">
+            {% for telefon in data %}
+            <div class="card m-2" style="width: 18rem;">
+                <img src="{{ telefon['telephone_image'] }}" class="card-img-top" alt="{{ telefon['telephone_title'] }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ telefon['telephone_title'] }}</h5>
+                    <p class="card-text">Ürün Kodu: {{ telefon['product_code'] }}</p>
+                    <p class="card-text">Fiyat: {{ telefon['telephone_price'] }}TL</p>
+                    <a href="{{ telefon['telephone_link'] }}" class="btn btn-primary">Daha fazla bilgi</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
