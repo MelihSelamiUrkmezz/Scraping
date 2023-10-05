@@ -42,10 +42,11 @@ def index():
                         "telephone_price": telephone_price,
                         "telephone_link": telephone_link
                     }
-                    redis_client.set(telephone_link,json.dumps(single_data))
+                    redis_client.setex(telephone_link,ttl_second,json.dumps(single_data))
                     data.append(single_data)
     return render_template('card.html', data=data)
 
 if __name__ == '__main__':
     redis_client = redis.StrictRedis(host='localhost', port=6379, db=0)
+    ttl_second = 21600
     app.run(debug=True)
